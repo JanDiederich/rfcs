@@ -49,7 +49,13 @@ Even Swift recommends to use anonymous arguments where arguments can't be useful
 
 All existing functions would keep their signature, using the underscore. `pub fn with_capacity(capacity: usize) -> String` would become `pub fn with_capacity(_ capacity: usize) -> String`. Called as `with_capacity(23)`.
 
-New functions would then ideally don't have that underscore, like `fn read_av1_image(file_name: String, from_cache: bool, use_transparency: bool)`. Called `read_av1_image(file_name: "Hello World", from_cache: false, use_transparency: true)`
+New functions would then ideally do _not_ have that underscore (ommiting the argument), like `fn read_av1_image(file_name: String, from_cache: bool, use_transparency: bool)`. Called `read_av1_image(file_name: "Hello World", from_cache: false, use_transparency: true)`
+
+Changing the order of arguments wouldn't possible, to enforce good, consistent readability.
+
+Overloading functions with different argument names would be possible.
+
+Overloading with different argument types is _not_ possible, that wouldn't change. Allowing overloading just by the type, which isn't always obvious for the reader of the calling code, would just reduce readability.
 
 ### Migration
 
